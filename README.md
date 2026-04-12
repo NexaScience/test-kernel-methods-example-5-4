@@ -1,41 +1,24 @@
 # Kernel Methods Example
 
-A minimal collection of scripts demonstrating classic kernel methods (SVM, Kernel Ridge Regression) using scikit-learn.
-
-## Setup
-
-```bash
-pip install -r requirements.txt
-```
+Minimal scikit-learn examples demonstrating kernel-based methods.
 
 ## Scripts
 
-### train_svm.py
+| Script | Description |
+|---|---|
+| `train_svm_rbf.py` | SVM with RBF kernel on Digits |
+| `train_svm_linear.py` | SVM with linear kernel on Digits |
+| `train_svm_poly.py` | SVM with polynomial kernel on Digits |
+| `kernel_comparison.py` | Compare all three SVM kernels |
+| `train_kernel_ridge.py` | Kernel Ridge Regression on California Housing (2000 samples) |
 
-Train an SVM classifier on the Digits dataset.
-
-```bash
-python train_svm.py --kernel rbf --C 1.0 --gamma scale --test-size 0.2 --seed 42
-python train_svm.py --kernel linear
-python train_svm.py --kernel poly --C 10.0
-```
-
-### train_kernel_ridge.py
-
-Train Kernel Ridge Regression on a subset of California Housing.
+## Usage
 
 ```bash
-python train_kernel_ridge.py --kernel rbf --alpha 1.0 --test-size 0.2 --seed 42
-python train_kernel_ridge.py --kernel linear --alpha 0.1
-python train_kernel_ridge.py --kernel poly --alpha 0.5
+pip install -r requirements.txt
+python train_svm_rbf.py --seed 42
+python kernel_comparison.py
+python train_kernel_ridge.py
 ```
 
-### kernel_comparison.py
-
-Compare SVM kernels (rbf, linear, poly) via 5-fold cross-validation.
-
-```bash
-python kernel_comparison.py --dataset digits --seed 42
-python kernel_comparison.py --dataset wine
-python kernel_comparison.py --dataset breast_cancer
-```
+Each script accepts only `--seed` (default 42) for reproducibility.
