@@ -47,7 +47,11 @@ def main():
         print(f"[ERROR] {e}"); traceback.print_exc(); sys.exit(1)
 
     y_pred = model.predict(X_test)
-    rmse = mean_squared_error(y_test, y_pred, squared=False)
+    try:
+        from sklearn.metrics import root_mean_squared_error
+        rmse = root_mean_squared_error(y_test, y_pred)
+    except ImportError:
+        rmse = mean_squared_error(y_test, y_pred, squared=False)
     r2 = r2_score(y_test, y_pred)
     print(f"\n[EVAL] Kernel Ridge (RBF) RMSE: {rmse:.4f}  R2: {r2:.4f}")
     print(f"[DONE] Completed (seed={args.seed})")
